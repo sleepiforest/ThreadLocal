@@ -3,8 +3,13 @@ c++11 code style. Gracefully wrap pthread functions to manipulate thread locals 
 
 Examples:
 ```
+//thread singleton
 int & i = ThreadData<int>::Instance(5);
 std::string & b = ThreadData<std::string>::Instance(i, 'b');
+
+//thread local
+static ThreadLocal<std::string> a; 
+std::string & aa = a.GetData(i, 'a');
 ```
 
 You can see more sample code in test.cpp.
